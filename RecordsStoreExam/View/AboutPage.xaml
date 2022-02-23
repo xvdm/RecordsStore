@@ -6,10 +6,9 @@
       xmlns:local="clr-namespace:RecordsStoreExam.View"
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
-      Background="Gray"
       Title="AboutPage">
 
     <Grid>
-        <RichTextBox Background="Gray" Name="InfoTextBox" FontSize="30" IsReadOnly="True"></RichTextBox>
+        <RichTextBox Background="Transparent" Name="InfoTextBox" FontSize="30" IsReadOnly="True"></RichTextBox>
     </Grid>
 </Page>
