@@ -10,6 +10,6 @@
       Title="AboutPage">
 
     <Grid>
-        <TextBlock Width="200" Height="200" Text="About page" FontSize="30"></TextBlock>
+        <RichTextBox Background="Gray" Name="InfoTextBox" FontSize="30" IsReadOnly="True"></RichTextBox>
     </Grid>
 </Page>
