@@ -25,6 +25,13 @@ namespace RecordsStoreExam.View
             InitializeComponent();
             Width = SystemParameters.WorkArea.Width;
             Height = SystemParameters.WorkArea.Height;
+
+            InfoTextBox.Document.Blocks.Clear();
+            InfoTextBox.Document.Blocks.Add(new Paragraph(new Run("Контакты")));
+
+            InfoTextBox.Document.Blocks.Add(new Paragraph(new Run("8-800-555-3535\t\tАдрес:\ngmail@gmail.com\t\tг. Одесса улица Садовая, 3")));
+            InfoTextBox.Document.Blocks.Add(new Paragraph(new Run("")));
+            
         }
     }
 }

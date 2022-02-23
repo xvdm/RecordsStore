@@ -6,10 +6,9 @@
       xmlns:local="clr-namespace:RecordsStoreExam.View"
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
-      Background="Gray"
       Title="ContactsPage">
 
     <Grid>
-        <TextBlock Width="200" Height="200" Text="Contacts page" FontSize="30"></TextBlock>
+        <RichTextBox Background="Transparent" Name="InfoTextBox" FontSize="30" IsReadOnly="True"></RichTextBox>
     </Grid>
 </Page>
