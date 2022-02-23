@@ -23,6 +23,8 @@ namespace RecordsStoreExam.View
         public ContactsPage()
         {
             InitializeComponent();
+            Width = SystemParameters.WorkArea.Width;
+            Height = SystemParameters.WorkArea.Height;
         }
     }
 }

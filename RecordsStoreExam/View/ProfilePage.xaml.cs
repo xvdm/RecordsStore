@@ -23,6 +23,8 @@ namespace RecordsStoreExam.View
         public ProfilePage()
         {
             InitializeComponent();
+            Width = SystemParameters.WorkArea.Width;
+            Height = SystemParameters.WorkArea.Height;
         }
     }
 }
