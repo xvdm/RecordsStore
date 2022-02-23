@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using RecordsStoreExam.View;
 
 namespace RecordsStoreExam
 {
@@ -66,28 +67,27 @@ namespace RecordsStoreExam
 
         private void LabelMain_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Main");
-            frame.Navigate(new MainPage()); // открытие страницы
+            frame.Navigate(new MainPage());
         }
 
         private void LabelShop_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Shop");
+            frame.Navigate(new ShopPage());
         }
 
         private void LabelContacts_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Contacts");
+            frame.Navigate(new ContactsPage());
         }
 
         private void LabelAbout_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("About");
+            frame.Navigate(new AboutPage());
         }
 
         private void LabelProfile_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Profile");
+            frame.Navigate(new ProfilePage());
         }
     }
 }
