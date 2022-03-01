@@ -16,6 +16,9 @@ using RecordsStoreExam.View;
 
 namespace RecordsStoreExam
 {
+
+    
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
