@@ -14,7 +14,7 @@ namespace RecordsStoreExam
 
         public int Id { get; set; }
         public string Login { get; set; }
-        public string PasswordHash { get; set; }
+        public string PasswordHash { get; set; } 
         public bool IsAdmin { get; set; }
 
         public virtual ICollection<Sale> Sales { get; set; }
