@@ -29,6 +29,12 @@
             <Label FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" DockPanel.Dock="Top">5</Label>
         </DockPanel>
 
+        <DockPanel Height="100" Name="PaginationDockPanel" DockPanel.Dock="Bottom" Background="Black">
+            <Label Height="100" Foreground="White" FontSize="30" Padding="27" Margin="0" Width="125" Content="Main" Name="LabelMain"></Label>
+            <Label Height="100" Foreground="White" FontSize="30" Padding="27" Margin="0" Width="170" Content="Contacts" Name="LabelContacts"></Label>
+            <Label Height="100" Foreground="White" FontSize="30" Padding="27" Margin="0" Width="135" Content="About" Name="LabelAbout"></Label>
+        </DockPanel>
+        
         <Grid Margin="0,40,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
@@ -72,5 +78,7 @@
                 <Label Content="700$" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center"></Label>
             </StackPanel>
         </Grid>
+
+        
     </DockPanel>
 </Page>

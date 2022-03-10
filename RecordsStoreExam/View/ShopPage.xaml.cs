@@ -24,7 +24,7 @@ namespace RecordsStoreExam.View
         {
             InitializeComponent();
             Width = SystemParameters.WorkArea.Width;
-            Height = SystemParameters.WorkArea.Height;
+            Height = SystemParameters.WorkArea.Height - 100;
         }
     }
 }

@@ -25,7 +25,7 @@ namespace RecordsStoreExam
         {
             InitializeComponent();
             Width = SystemParameters.WorkArea.Width;
-            Height = SystemParameters.WorkArea.Height;
+            Height = SystemParameters.WorkArea.Height - 100;
 
 
             var fullFilePath = @"http://www.americanlayout.com/wp/wp-content/uploads/2012/08/C-To-Go-300x300.png";
