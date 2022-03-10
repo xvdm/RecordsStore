@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using RecordsStoreExam.Model;
 using RecordsStoreExam.View;
 
 namespace RecordsStoreExam
@@ -22,7 +23,7 @@ namespace RecordsStoreExam
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IContextOptions
     {
         public MainWindow()
         {
@@ -32,6 +33,7 @@ namespace RecordsStoreExam
             //this.WindowStyle = WindowStyle.None;
             WindowState = WindowState.Maximized;
             MenuDockPanel.Width = Width;
+            frame.Navigate(new MainPage());
         }
 
         private void MenuItem_MouseMove(object sender, MouseEventArgs e)

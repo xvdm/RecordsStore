@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,20 @@ namespace RecordsStoreExam
             InitializeComponent();
             Width = SystemParameters.WorkArea.Width;
             Height = SystemParameters.WorkArea.Height;
+
+
+            var fullFilePath = @"http://www.americanlayout.com/wp/wp-content/uploads/2012/08/C-To-Go-300x300.png";
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(fullFilePath, UriKind.Absolute);
+            bitmap.EndInit();
+            Image1.Source = bitmap;
+            Image2.Source = bitmap;
+            Image3.Source = bitmap;
+
+            Image5.Source = bitmap;
+            Image6.Source = bitmap;
+            Image7.Source = bitmap;
         }
     }
 }

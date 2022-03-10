@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=DESKTOP-A9TP3CP;Database=MusicStore;Trusted_Connection=True;"
+  }
+}

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RecordsStoreExam"
         mc:Ignorable="d"
-        Title="Login" Height="230" Width="270" Closing="Window_Closing">
+        Title="Login" Height="285" Width="260" Closing="Window_Closing">
     <StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10">
             <StackPanel>
@@ -13,10 +13,11 @@
                 <Label Content="Password:" Width="70" Height="40" FontFamily="Candara" FontWeight="Bold"></Label>
             </StackPanel>
             <StackPanel>
-                <TextBox Width="150" Height="40" Name="LoginTextBox"></TextBox>
-                <TextBox Width="150" Height="40" Name="PasswordTextBox"></TextBox>
+                <TextBox Width="150" Height="40" Name="LoginTextBox" Text="user"></TextBox>
+                <PasswordBox Width="150" Height="40" Name="PasswordTextBox" Password="user"></PasswordBox>
             </StackPanel>
         </StackPanel>
         <Button Width="220" Height="50" Name="SignInButton" HorizontalAlignment="Left" Margin="10" Content="Sign in" FontSize="24" FontFamily="Candara" FontWeight="Bold" Click="SignInButton_Click"></Button>
+        <Button Width="220" Height="50" Name="SignUpButton" HorizontalAlignment="Left" Margin="10" Content="Sign up" FontSize="24" FontFamily="Candara" FontWeight="Bold" Click="SignUpButton_Click"></Button>
     </StackPanel>
 </Window>

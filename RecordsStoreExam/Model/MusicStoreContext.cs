@@ -26,40 +26,32 @@ namespace RecordsStoreExam
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-A9TP3CP;Database=MusicStore;Trusted_Connection=True;");
-            }
+            //if (!optionsBuilder.IsConfigured)
+            //{
+            //    #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+            //    optionsBuilder.UseSqlServer("Server=DESKTOP-A9TP3CP;Database=MusicStore;Trusted_Connection=True;");
+            //}
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Band>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.Name).IsRequired();
             });
 
             modelBuilder.Entity<Genre>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.Name).IsRequired();
             });
 
             modelBuilder.Entity<Publisher>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.Name).IsRequired();
             });
 
             modelBuilder.Entity<Record>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.IdBand).HasColumnName("Id_Band");
 
                 entity.Property(e => e.IdGenre).HasColumnName("Id_Genre");
@@ -95,8 +87,6 @@ namespace RecordsStoreExam
 
             modelBuilder.Entity<Sale>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.DateOfSale).HasColumnType("date");
 
                 entity.Property(e => e.IdRecord).HasColumnName("Id_Record");
@@ -118,8 +108,6 @@ namespace RecordsStoreExam
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.Login).IsRequired();
 
                 entity.Property(e => e.PasswordHash).IsRequired();

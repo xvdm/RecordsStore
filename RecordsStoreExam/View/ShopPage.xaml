@@ -10,6 +10,6 @@
       Title="ShopPage">
 
     <Grid>
-        <TextBlock Width="200" Height="200" Text="Shop page" FontSize="30"></TextBlock>
+        <TextBlock Width="200" Height="200" Text="DELETED" FontSize="30"></TextBlock>
     </Grid>
 </Page>
