@@ -41,5 +41,17 @@ namespace RecordsStoreExam
             Image6.Source = bitmap;
             Image7.Source = bitmap;
         }
+
+        private void Label_MouseEnter(object sender, MouseEventArgs e)
+        {
+            SolidColorBrush brush = new SolidColorBrush(Color.FromRgb(70, 70, 70));
+            ((Label)sender).Background = brush;
+        }
+
+        private void Label_MouseLeave(object sender, MouseEventArgs e)
+        {
+            SolidColorBrush brush = new SolidColorBrush(Color.FromRgb(99, 99, 99));
+            ((Label)sender).Background = brush;
+        }
     }
 }

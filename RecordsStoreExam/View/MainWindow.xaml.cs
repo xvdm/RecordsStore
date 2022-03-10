@@ -46,18 +46,6 @@ namespace RecordsStoreExam
             
         }
 
-        private void Menu_MouseEnter(object sender, MouseEventArgs e)
-        {
-            SolidColorBrush brush = new SolidColorBrush(Color.FromRgb(0,0,0));
-            Background = brush;
-        }
-
-        private void Menu_MouseLeave(object sender, MouseEventArgs e)
-        {
-            SolidColorBrush brush = new SolidColorBrush(Color.FromRgb(0, 0, 0));
-            Background = brush;
-        }
-
         private void Label_MouseEnter(object sender, MouseEventArgs e)
         {
             SolidColorBrush brush = new SolidColorBrush(Color.FromRgb(30, 30, 30));
