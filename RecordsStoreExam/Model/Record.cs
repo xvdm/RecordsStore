@@ -20,12 +20,8 @@ namespace RecordsStoreExam
         public decimal Price { get; set; }
         public string PhotoUri { get; set; }
         public int IdBand { get; set; }
-        public int IdPublisher { get; set; }
-        public int IdGenre { get; set; }
 
         public virtual Band IdBandNavigation { get; set; }
-        public virtual Genre IdGenreNavigation { get; set; }
-        public virtual Publisher IdPublisherNavigation { get; set; }
         public virtual ICollection<Sale> Sales { get; set; }
     }
 }

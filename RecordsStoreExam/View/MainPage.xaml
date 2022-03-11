@@ -31,53 +31,21 @@
             <Label Foreground="White" FontSize="24" Padding="25" Margin="0" Width="140" Content="Previous" Name="LabelPrevious" HorizontalAlignment="Center" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="LabelPrevious_MouseDown"></Label>
             <Label Foreground="White" FontSize="24" Padding="25" Margin="0" Width="100" Content="Next" Name="LabelNext" HorizontalAlignment="Center" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="LabelNext_MouseDown"></Label>
             <Label Foreground="White" FontSize="24" Padding="25,25,0,25" Margin="0" Width="150" Content="Go to page" Name="LabelGoTo" HorizontalAlignment="Center" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="LabelGoTo_MouseDown"></Label>
-            <TextBox Background="#FF636363" Width="125" Name="TextBoxGoTo" FontSize="24" Padding="0,25,0,25" Foreground="White" MaxLength="9" Text="1"></TextBox>
-            <Label Foreground="White" FontSize="24" Padding="25" Margin="0" Width="300" Content="Total pages: 1" Name="LabelTotal" DockPanel.Dock="Right"></Label>
-            <Label Foreground="White" FontSize="24" Padding="25" Margin="0" Width="300" Content="Current page: 1" Name="LabelCurrent" HorizontalAlignment="Right"></Label>
+            <TextBox Background="#FF636363" Width="125" Name="TextBoxGoTo" FontSize="24" Padding="0,25,0,25" Foreground="White" MaxLength="9" Text="0"></TextBox>
+            <Label Foreground="White" FontSize="24" Padding="25" Margin="0" Width="300" Content="Total pages: 0-0" Name="LabelTotal" DockPanel.Dock="Right"></Label>
+            <Label Foreground="White" FontSize="24" Padding="25" Margin="0" Width="300" Content="Current page: 0" Name="LabelCurrent" HorizontalAlignment="Right"></Label>
         </DockPanel>
         
-        <Grid Margin="0,40,0,0">
+        <Grid Margin="0,40,0,0" Name="GridRecords">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
-
-            <StackPanel Grid.Column="0" Grid.Row="0">
-                <Image Name="Image1" Width="200" Height="200"/>
-                <Label Content="First record" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center"></Label>
-                <Label Content="100$" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center"></Label>
-            </StackPanel>
-            <StackPanel Grid.Column="1" Grid.Row="0">
-                <Image Name="Image2" Width="200" Height="200"/>
-                <Label Content="Second record" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center"></Label>
-                <Label Content="200$" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center"></Label>
-            </StackPanel>
-            <StackPanel Grid.Column="2" Grid.Row="0">
-                <Image Name="Image3" Width="200" Height="200"/>
-                <Label Content="Third record" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center"></Label>
-                <Label Content="300$" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center"></Label>
-            </StackPanel>
-
-            <StackPanel Grid.Column="0" Grid.Row="1">
-                <Image Name="Image4" Width="200" Height="200"/>
-                <Label Content="Fifth record" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center"></Label>
-                <Label Content="500$" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center"></Label>
-            </StackPanel>
-            <StackPanel Grid.Column="1" Grid.Row="1">
-                <Image Name="Image5" Width="200" Height="200"/>
-                <Label Content="Sixth record" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center"></Label>
-                <Label Content="600$" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center"></Label>
-            </StackPanel>
-            <StackPanel Grid.Column="2" Grid.Row="1">
-                <Image Name="Image6" Width="200" Height="200"/>
-                <Label Content="Seventh record" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center"></Label>
-                <Label Content="700$" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center"></Label>
-            </StackPanel>
         </Grid>
 
         

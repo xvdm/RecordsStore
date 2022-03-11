@@ -18,8 +18,6 @@ namespace RecordsStoreExam
         }
 
         public virtual DbSet<Band> Bands { get; set; }
-        public virtual DbSet<Genre> Genres { get; set; }
-        public virtual DbSet<Publisher> Publishers { get; set; }
         public virtual DbSet<Record> Records { get; set; }
         public virtual DbSet<Sale> Sales { get; set; }
         public virtual DbSet<User> Users { get; set; }
@@ -40,23 +38,9 @@ namespace RecordsStoreExam
                 entity.Property(e => e.Name).IsRequired();
             });
 
-            modelBuilder.Entity<Genre>(entity =>
-            {
-                entity.Property(e => e.Name).IsRequired();
-            });
-
-            modelBuilder.Entity<Publisher>(entity =>
-            {
-                entity.Property(e => e.Name).IsRequired();
-            });
-
             modelBuilder.Entity<Record>(entity =>
             {
                 entity.Property(e => e.IdBand).HasColumnName("Id_Band");
-
-                entity.Property(e => e.IdGenre).HasColumnName("Id_Genre");
-
-                entity.Property(e => e.IdPublisher).HasColumnName("Id_Publisher");
 
                 entity.Property(e => e.Name).IsRequired();
 
@@ -71,18 +55,6 @@ namespace RecordsStoreExam
                     .HasForeignKey(d => d.IdBand)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Records_Bands");
-
-                entity.HasOne(d => d.IdGenreNavigation)
-                    .WithMany(p => p.Records)
-                    .HasForeignKey(d => d.IdGenre)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Records_Genres");
-
-                entity.HasOne(d => d.IdPublisherNavigation)
-                    .WithMany(p => p.Records)
-                    .HasForeignKey(d => d.IdPublisher)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Records_Publishers");
             });
 
             modelBuilder.Entity<Sale>(entity =>

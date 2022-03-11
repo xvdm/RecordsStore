@@ -26,7 +26,7 @@ namespace RecordsStoreExam
             InitializeComponent();
             IContextOptions.Configure();
             using (MusicStoreContext db = new MusicStoreContext(IContextOptions.Options)) 
-            { 
+            {
                 if(db.Users.FirstOrDefault() != null) { } // открываю соединение с базой данных, чтобы при первом
                                                           // нажатии на "sign in" или "sign up" она не тормозила
             }
