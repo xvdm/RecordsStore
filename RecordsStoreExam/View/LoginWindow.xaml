@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RecordsStoreExam"
         mc:Ignorable="d"
-        Title="Login" Height="285" Width="260" Closing="Window_Closing">
+        Title="Login" Height="285" Width="260">
     <StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10">
             <StackPanel>

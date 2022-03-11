@@ -31,17 +31,15 @@ namespace RecordsStoreExam
                                                           // нажатии на "sign in" или "sign up" она не тормозила
             }
         }
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-        }
 
         private void SignInButton_Click(object sender, RoutedEventArgs e)
         {
             using (MusicStoreContext db = new MusicStoreContext(IContextOptions.Options))
             {
-                if (db.Users.ToArray().FirstOrDefault(x => x.Login == LoginTextBox.Text && x.PasswordHash == CalculateHash(PasswordTextBox.Password).ToString()) != null)
+                var user = db.Users.ToArray().FirstOrDefault(x => x.Login == LoginTextBox.Text && x.PasswordHash == CalculateHash(PasswordTextBox.Password).ToString());
+                if (user != null)
                 {
-                    var mainWindow = new MainWindow();
+                    var mainWindow = new MainWindow(user);
                     Close();
                     mainWindow.ShowDialog();
                 }

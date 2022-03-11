@@ -5,40 +5,7 @@
              StartupUri="View/LoginWindow.xaml">
     
     <Application.Resources>
-        <!--<Style TargetType="MenuItem">
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True" >
-                    <Setter Property="Background" Value="Black" />
-                </Trigger>
-                <Trigger Property="IsFocused" Value="True" >
-                    <Setter Property="Background" Value="Black" />
-                </Trigger>
-                <Trigger Property="IsMouseDirectlyOver" Value="True" >
-                    <Setter Property="Background" Value="Black" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style TargetType="Menu">
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True" >
-                    <Setter Property="Background" Value="Black" />
-                </Trigger>
-                <Trigger Property="IsFocused" Value="True" >
-                    <Setter Property="Background" Value="Black" />
-                </Trigger>
-                <Trigger Property="IsMouseDirectlyOver" Value="True" >
-                    <Setter Property="Background" Value="Black" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>-->
-
-        <!--<VisualState x:Name="Highlighted">
-            <Storyboard>
-                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Content" Storyboard.TargetProperty="(TextBlock.Foreground)">
-                    <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{StaticResource MenuForeground_MouseOver}"/>
-                </ObjectAnimationUsingKeyFrames>
-            </Storyboard>
-        </VisualState>-->
+        
         
     </Application.Resources>
 </Application>

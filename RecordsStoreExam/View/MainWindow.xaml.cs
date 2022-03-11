@@ -25,15 +25,26 @@ namespace RecordsStoreExam
     /// </summary>
     public partial class MainWindow : Window, IContextOptions
     {
-        public MainWindow()
+        private User _user { get; set; }
+
+        public MainWindow(User user)
         {
+            _user = user;
             InitializeComponent();
             Width = SystemParameters.WorkArea.Width;
             Height = SystemParameters.WorkArea.Height;
             //this.WindowStyle = WindowStyle.None;
             WindowState = WindowState.Maximized;
             MenuDockPanel.Width = Width;
-            frame.Navigate(new MainPage());
+
+            if(_user.IsAdmin == true)
+            {
+                frame.Navigate(new AdminMainPage());
+            }
+            else
+            {
+                frame.Navigate(new MainPage());
+            }
         }
 
         private void MenuItem_MouseMove(object sender, MouseEventArgs e)
@@ -60,22 +71,51 @@ namespace RecordsStoreExam
 
         private void LabelMain_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            frame.Navigate(new MainPage());
+            if (_user.IsAdmin == true)
+            {
+                frame.Navigate(new AdminMainPage());
+            }
+            else
+            {
+                frame.Navigate(new MainPage());
+            }
         }
 
         private void LabelShop_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            frame.Navigate(new ShopPage());
+            /// DELETED
+            //if (User.IsAdmin == true)
+            //{
+            //    frame.Navigate(new ShopPage());
+            //}
+            //else
+            //{
+            //    frame.Navigate(new AdminShopPage());
+            //}
         }
 
         private void LabelContacts_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            frame.Navigate(new ContactsPage());
+            if (_user.IsAdmin == true)
+            {
+                frame.Navigate(new AdminContactsPage());
+            }
+            else
+            {
+                frame.Navigate(new ContactsPage());
+            }
         }
 
         private void LabelAbout_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            frame.Navigate(new AboutPage());
+            if (_user.IsAdmin == true)
+            {
+                frame.Navigate(new AdminAboutPage());
+            }
+            else
+            {
+                frame.Navigate(new AboutPage());
+            }
         }
 
         private void LabelProfile_MouseDown(object sender, MouseButtonEventArgs e)
