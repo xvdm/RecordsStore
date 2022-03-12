@@ -27,15 +27,17 @@ namespace RecordsStoreExam
     public partial class MainPage : Page
     {
         private int _page = 0;
-
-
         private int _totalPages = 0;
-        private int _recordsOnPage = 6;
+        private const int _recordsOnPage = 6;
+
         private List<Performer> _performers = new();
         private List<SortingOption> _sortingOptions = new();
+
         private SolidColorBrush _brushDefault = new SolidColorBrush(Color.FromRgb(99, 99, 99));
         private SolidColorBrush _brushSelected = new SolidColorBrush(Color.FromRgb(70, 70, 70));
+
         private List<Record> _recordsList = new();
+        private List<Band> _bandsList = new();
 
         public MainPage()
         {
@@ -51,6 +53,7 @@ namespace RecordsStoreExam
                     AddPerformerToSortingList(band.Name);
                 }
                 _recordsList = db.Records.ToList();
+                _bandsList = db.Bands.ToList();
             }
             UpdateRecordsContent();
         }
@@ -94,8 +97,7 @@ namespace RecordsStoreExam
 
                 GridRecords.Children.Add(stackPanel);
 
-                column++;
-                if (column == 3)
+                if (++column == 3)
                 {
                     column = 0;
                     row++;
@@ -105,45 +107,37 @@ namespace RecordsStoreExam
 
         private void UpdateRecordsContent(string performer = null)
         {
-            using (MusicStoreContext db = new MusicStoreContext(IContextOptions.Options)) { 
-                int column = 0;
-                int row = 0;
-                int id;
-                GridRecords.Children.Clear();
-                if (performer == null)
+            int column = 0;
+            int row = 0;
+            GridRecords.Children.Clear();
+            if (performer == null)
+            {
+                foreach (var record in _recordsList.Skip(_page * _recordsOnPage).Take(_recordsOnPage))
                 {
-                    foreach (var record in db.Records.Skip(_page * _recordsOnPage).Take(_recordsOnPage))
+                    AddRecordToStackPanel(record, column, row);
+                    if (++column == 3)
                     {
-                        AddRecordToStackPanel(record, column, row);
-
-                        column++;
-                        if (column == 3)
-                        {
-                            column = 0;
-                            row++;
-                        }
+                        column = 0;
+                        row++;
                     }
-                    _totalPages = db.Records.Count() / _recordsOnPage;
                 }
-                else
-                {
-                    id = db.Bands.Where(x => x.Name == performer).First().Id;
-                    foreach (var record in db.Records.Where(x => x.IdBand == id).Skip(_page * _recordsOnPage).Take(_recordsOnPage))
-                    {
-                        AddRecordToStackPanel(record, column, row);
-
-                        column++;
-                        if (column == 3)
-                        {
-                            column = 0;
-                            row++;
-                        }
-                    }
-                    _totalPages = db.Records.Where(x => x.IdBand == id).Count() / _recordsOnPage;
-                }
-
-                LabelTotal.Content = $"Total pages: 0-{_totalPages}";
+                _totalPages = _recordsList.Count() / _recordsOnPage;
             }
+            else
+            {
+                int id = _bandsList.Where(x => x.Name == performer).First().Id;
+                foreach (var record in _recordsList.Where(x => x.IdBand == id).Skip(_page * _recordsOnPage).Take(_recordsOnPage))
+                {
+                    AddRecordToStackPanel(record, column, row);
+                    if (++column == 3)
+                    {
+                        column = 0;
+                        row++;
+                    }
+                }
+                _totalPages = _recordsList.Where(x => x.IdBand == id).Count() / _recordsOnPage;
+            }
+            LabelTotal.Content = $"Total pages: 0-{_totalPages}";
         }
 
 
@@ -206,7 +200,6 @@ namespace RecordsStoreExam
         {
             ((Label)sender).Background = _brushSelected;
             _page = 0;
-
             foreach (var x in _performers)
             {
                 x.IsSelected = false;
@@ -278,10 +271,6 @@ namespace RecordsStoreExam
                     UpdateRecordsContent();
                     LabelCurrent.Content = $"Current page: {_page}";
                 }
-            }
-            else
-            {
-                MessageBox.Show("Incorrect input!");
             }
         }
 
