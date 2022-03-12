@@ -37,6 +37,7 @@ namespace RecordsStoreExam
         private SolidColorBrush _brushSelected = new SolidColorBrush(Color.FromRgb(70, 70, 70));
 
         private readonly List<Record> _allRecordsList = new();
+        private List<Record> _currentRecordsPerformerList = new();
         private List<Record> _currentRecordsList = new();
         private List<Band> _bandsList = new();
 
@@ -50,7 +51,8 @@ namespace RecordsStoreExam
             using (MusicStoreContext db = new MusicStoreContext(IContextOptions.Options))
             {  
                 _allRecordsList = db.Records.ToList();
-                _currentRecordsList = _allRecordsList;
+                _currentRecordsPerformerList = _allRecordsList;
+                _currentRecordsList = _currentRecordsPerformerList;
                 _bandsList = db.Bands.ToList();
 
                 foreach (var band in _bandsList)
@@ -108,38 +110,22 @@ namespace RecordsStoreExam
             }
         }
 
-        private void UpdateRecordsContent(string performer = null)
+        private void UpdateRecordsContent()
         {
+            ApplySortingOptions();
             int column = 0;
             int row = 0;
             GridRecords.Children.Clear();
-            if (performer == null)
+            foreach (var record in _currentRecordsList.Skip(_page * _recordsOnPage).Take(_recordsOnPage))
             {
-                foreach (var record in _currentRecordsList.Skip(_page * _recordsOnPage).Take(_recordsOnPage))
+                AddRecordToStackPanel(record, column, row);
+                if (++column == 3)
                 {
-                    AddRecordToStackPanel(record, column, row);
-                    if (++column == 3)
-                    {
-                        column = 0;
-                        row++;
-                    }
+                    column = 0;
+                    row++;
                 }
-                _totalPages = _currentRecordsList.Count() / _recordsOnPage;
             }
-            else
-            {
-                int id = _bandsList.Where(x => x.Name == performer).First().Id;
-                foreach (var record in _currentRecordsList.Where(x => x.IdBand == id).Skip(_page * _recordsOnPage).Take(_recordsOnPage))
-                {
-                    AddRecordToStackPanel(record, column, row);
-                    if (++column == 3)
-                    {
-                        column = 0;
-                        row++;
-                    }
-                }
-                _totalPages = _currentRecordsList.Where(x => x.IdBand == id).Count() / _recordsOnPage;
-            }
+            _totalPages = _currentRecordsList.Count() / _recordsOnPage;
             LabelTotal.Content = $"Total pages: 0-{_totalPages}";
         }
 
@@ -211,7 +197,11 @@ namespace RecordsStoreExam
                 {
                     x.IsSelected = true;
                     x.Label.Background = _brushSelected;
-                    UpdateRecordsContent(x.Label.Content.ToString());
+                    int id = _bandsList.Where(y => y.Name == x.Label.Content.ToString()).First().Id;
+                    _currentRecordsPerformerList = _allRecordsList;
+                    _currentRecordsPerformerList = _currentRecordsPerformerList.Where(x => x.IdBand == id).ToList();
+                    _currentRecordsList = _currentRecordsPerformerList;
+                    UpdateRecordsContent();
                     LabelCurrent.Content = $"Current page: {_page}";
                 }
             }
@@ -240,26 +230,37 @@ namespace RecordsStoreExam
                 {
                     x.IsSelected = true;
                     x.Label.Background = _brushSelected;
-                    //UpdateRecordsContent(x.Label.Content.ToString());
-                    LabelCurrent.Content = $"Current page: {_page}";
                 }
             }
+            _currentRecordsList = _currentRecordsPerformerList;
+            UpdateRecordsContent();
+            LabelCurrent.Content = $"Current page: {_page}";
+        }
 
-            if (((Label)sender).Name.ToString() == "LabelSortNameAsc")
+        private void ApplySortingOptions()
+        {
+            foreach (var x in _sortingOptions)
             {
-
-            }
-            else if (((Label)sender).Name.ToString() == "LabelSortNameDesc")
-            {
-
-            }
-            else if (((Label)sender).Name.ToString() == "LabelSortPriceAsc")
-            {
-
-            }
-            else if (((Label)sender).Name.ToString() == "LabelSortPriceDesc")
-            {
-
+                if (x.IsSelected == true)
+                {
+                    if (x.Label.Name.ToString() == "LabelSortNameAsc")
+                    {
+                        _currentRecordsList.Sort((x, y) => x.Name.CompareTo(y.Name));
+                    }
+                    else if (x.Label.Name.ToString() == "LabelSortNameDesc")
+                    {
+                        _currentRecordsList.Sort((x, y) => y.Name.CompareTo(x.Name));
+                    }
+                    else if (x.Label.Name.ToString() == "LabelSortPriceAsc")
+                    {
+                        _currentRecordsList.Sort((x, y) => x.Price.CompareTo(y.Price));
+                    }
+                    else if (x.Label.Name.ToString() == "LabelSortPriceDesc")
+                    {
+                        _currentRecordsList.Sort((x, y) => y.Price.CompareTo(x.Price));
+                    }
+                    break;
+                }
             }
         }
 
