@@ -18,13 +18,12 @@
         </DockPanel>
 
 
-        <DockPanel Width="400" DockPanel.Dock="Right" Background="#FF636363">
+        <DockPanel Width="400" DockPanel.Dock="Right" Background="#FF636363" Name="SortingDockPanel">
             <Label FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" DockPanel.Dock="Top" Margin="0,40,0,0">Sorting</Label>
-            <Label FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" DockPanel.Dock="Top">1</Label>
-            <Label FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" DockPanel.Dock="Top">2</Label>
-            <Label FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" DockPanel.Dock="Top">3</Label>
-            <Label FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" DockPanel.Dock="Top">4</Label>
-            <Label FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" DockPanel.Dock="Top">5</Label>
+            <Label FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" DockPanel.Dock="Top" MouseEnter="LabelSorting_MouseEnter" MouseLeave="LabelSorting_MouseLeave" MouseDown="LabelSorting_MouseDown" Name="LabelSortNameAsc">By name ascending</Label>
+            <Label FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" DockPanel.Dock="Top" MouseEnter="LabelSorting_MouseEnter" MouseLeave="LabelSorting_MouseLeave" MouseDown="LabelSorting_MouseDown" Name="LabelSortNameDesc">By name descending</Label>
+            <Label FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" DockPanel.Dock="Top" MouseEnter="LabelSorting_MouseEnter" MouseLeave="LabelSorting_MouseLeave" MouseDown="LabelSorting_MouseDown" Name="LabelSortPriceAsc">By price ascending</Label>
+            <Label FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" DockPanel.Dock="Top" MouseEnter="LabelSorting_MouseEnter" MouseLeave="LabelSorting_MouseLeave" MouseDown="LabelSorting_MouseDown" Name="LabelSortPriceDesc">By price descending</Label>
         </DockPanel>
 
         <DockPanel Height="100" Name="PaginationDockPanel" DockPanel.Dock="Bottom" Background="#FF636363" HorizontalAlignment="Stretch">
