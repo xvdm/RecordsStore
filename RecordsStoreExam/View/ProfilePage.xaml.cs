@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RecordsStoreExam.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,6 +32,7 @@ namespace RecordsStoreExam.View
             _user = user;
             Width = SystemParameters.WorkArea.Width;
             Height = SystemParameters.WorkArea.Height - 100;
+            CurrentLoginLabel.Content = $"Your login: {_user.Login}";
         }
 
         private void Label_MouseEnter(object sender, MouseEventArgs e)
@@ -47,6 +49,16 @@ namespace RecordsStoreExam.View
         {
             var changeWindow = new ChangeLoginWindow(_user);
             changeWindow.ShowDialog();
+            UpdateUser();
+            CurrentLoginLabel.Content = $"Your login: {_user.Login}";
+        }
+
+        private void UpdateUser()
+        {
+            using (MusicStoreContext db = new MusicStoreContext(IContextOptions.Options))
+            {
+                _user = db.Users.Where(x => x.Id == _user.Id).FirstOrDefault();
+            }
         }
     }
 }
