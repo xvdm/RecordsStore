@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Win32;
 using RecordsStoreExam.Model;
+using RecordsStoreExam.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,11 +39,15 @@ namespace RecordsStoreExam
         private List<Record> _currentRecordsList = new();
         private List<Band> _bandsList = new();
 
-        public MainPage()
+        private User _user;
+
+        public MainPage(User user)
         {
             InitializeComponent();
             Width = SystemParameters.WorkArea.Width;
             Height = SystemParameters.WorkArea.Height - 100;
+
+            _user = user;
 
             FillSortingOptions();
             using (MusicStoreContext db = new MusicStoreContext(IContextOptions.Options))
@@ -185,6 +190,9 @@ namespace RecordsStoreExam
         private void StackPanel_MouseDown(object sender, MouseEventArgs e)
         {
             ((StackPanel)sender).Background = _brushSelected;
+            Record record = _currentRecordsList.Where(x => x.Name == ((Label)((StackPanel)sender).Children[1]).Content.ToString()).First();
+            var purchaseWindow = new PurchaseWindow(record, _bandsList.Where(x => x.Id == record.IdBand).ToList().First().Name, _user);
+            purchaseWindow.ShowDialog();
         }
 
         private void LabelPerformer_MouseEnter(object sender, MouseEventArgs e)

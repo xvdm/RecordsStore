@@ -33,7 +33,7 @@ namespace RecordsStoreExam
             InitializeComponent();
             Width = SystemParameters.WorkArea.Width;
             Height = SystemParameters.WorkArea.Height;
-            //this.WindowStyle = WindowStyle.None;
+            WindowStyle = WindowStyle.None;
             WindowState = WindowState.Maximized;
             MenuDockPanel.Width = Width;
             LabelProfile.Content = _user.Login;
@@ -44,7 +44,7 @@ namespace RecordsStoreExam
             }
             else
             {
-                frame.Navigate(new MainPage());
+                frame.Navigate(new MainPage(_user));
             }
         }
 
@@ -78,21 +78,8 @@ namespace RecordsStoreExam
             }
             else
             {
-                frame.Navigate(new MainPage());
+                frame.Navigate(new MainPage(_user));
             }
-        }
-
-        private void LabelShop_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            /// DELETED
-            //if (User.IsAdmin == true)
-            //{
-            //    frame.Navigate(new ShopPage());
-            //}
-            //else
-            //{
-            //    frame.Navigate(new AdminShopPage());
-            //}
         }
 
         private void LabelContacts_MouseDown(object sender, MouseButtonEventArgs e)

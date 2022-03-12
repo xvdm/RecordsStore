@@ -33,7 +33,7 @@
             <Label FontSize="24" Padding="25" Margin="0" Width="300" Content="Total pages: 0-0" Name="LabelTotal" DockPanel.Dock="Right"></Label>
             <Label FontSize="24" Padding="25" Margin="0" Width="300" Content="Current page: 0" Name="LabelCurrent" HorizontalAlignment="Right"></Label>
         </DockPanel>
-        
+
         <Grid Margin="0,40,0,0" Name="GridRecords">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
@@ -45,7 +45,5 @@
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
         </Grid>
-
-        
     </DockPanel>
 </Page>
