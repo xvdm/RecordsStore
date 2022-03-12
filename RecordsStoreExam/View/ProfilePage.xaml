@@ -12,6 +12,10 @@
         <StackPanel>
             <Label Width="400" Height="100" FontSize="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" Name="CurrentLoginLabel">Your login: </Label>
             <Label Width="200" Height="100" FontSize="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" Background="Black" Foreground="White" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" Name="ChangeLoginLabel" MouseDown="ChangeLoginLabel_MouseDown">Change login</Label>
+            <Label Width="400" Height="100" FontSize="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" Margin="0,20,0,0">Your purchases: </Label>
+            <ScrollViewer>
+                <DockPanel Name="PurchasesDockTable"/>
+            </ScrollViewer>
         </StackPanel>
     </DockPanel>
 </Page>

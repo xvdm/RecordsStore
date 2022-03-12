@@ -33,6 +33,29 @@ namespace RecordsStoreExam.View
             Width = SystemParameters.WorkArea.Width;
             Height = SystemParameters.WorkArea.Height - 100;
             CurrentLoginLabel.Content = $"Your login: {_user.Login}";
+
+            using(MusicStoreContext db = new MusicStoreContext(IContextOptions.Options))
+            {
+                List<Sale> sales = db.Sales.ToList();
+                List<Band> bands = db.Bands.ToList();
+                foreach (var x in sales)
+                {
+                    if (x.IdUser == _user.Id)
+                    {
+                        Label label = new Label();
+                        label.FontSize = 24;
+                        label.Height = 60;
+                        label.HorizontalContentAlignment = HorizontalAlignment.Center;
+                        label.HorizontalAlignment = HorizontalAlignment.Center;
+                        label.VerticalAlignment = VerticalAlignment.Top;
+                        Record record = db.Records.Where(y => y.Id == x.IdRecord).FirstOrDefault();
+                        Band band = bands.Where(y => y.Id == record.IdBand).FirstOrDefault();
+                        label.Content = $"{band.Name} - '{record.Name}' | {((int)record.Price)} uah";
+                        DockPanel.SetDock(label, Dock.Top);
+                        PurchasesDockTable.Children.Add(label);
+                    }
+                }
+            }
         }
 
         private void Label_MouseEnter(object sender, MouseEventArgs e)
