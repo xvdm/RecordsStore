@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Win32;
 using RecordsStoreExam.Model;
 using System;
 using System.Collections.Generic;
@@ -30,24 +31,35 @@ namespace RecordsStoreExam
 
         private int _totalPages = 0;
         private int _recordsOnPage = 6;
-        private List<Performer> _performers = new List<Performer>();
+        private List<Performer> _performers = new();
+        private List<SortingOption> _sortingOptions = new();
         private SolidColorBrush _brushDefault = new SolidColorBrush(Color.FromRgb(99, 99, 99));
         private SolidColorBrush _brushSelected = new SolidColorBrush(Color.FromRgb(70, 70, 70));
+        private List<Record> _recordsList = new();
 
         public MainPage()
         {
             InitializeComponent();
             Width = SystemParameters.WorkArea.Width;
             Height = SystemParameters.WorkArea.Height - 100;
-            
 
-            UpdateRecordsContent();
+            FillSortingOptions();
             using (MusicStoreContext db = new MusicStoreContext(IContextOptions.Options))
             {
                 foreach (var band in db.Bands)
                 {
                     AddPerformerToSortingList(band.Name);
                 }
+                _recordsList = db.Records.ToList();
+            }
+            UpdateRecordsContent();
+        }
+
+        private void FillSortingOptions()
+        {
+            foreach(var x in SortingDockPanel.Children)
+            {
+                _sortingOptions.Add(new SortingOption((Label)x, false));
             }
         }
 
@@ -216,12 +228,43 @@ namespace RecordsStoreExam
 
         private void LabelSorting_MouseLeave(object sender, MouseEventArgs e)
         {
-            ((Label)sender).Background = _brushDefault;
+            if (_sortingOptions.Find(x => x.Label == ((Label)sender)).IsSelected == false)
+            {
+                ((Label)sender).Background = _brushDefault;
+            }
         }
 
         private void LabelSorting_MouseDown(object sender, MouseEventArgs e)
         {
-            ((Label)sender).Background = _brushSelected;
+            foreach (var x in _sortingOptions)
+            {
+                x.IsSelected = false;
+                x.Label.Background = _brushDefault;
+                if (x.Label == ((Label)sender))
+                {
+                    x.IsSelected = true;
+                    x.Label.Background = _brushSelected;
+                    //UpdateRecordsContent(x.Label.Content.ToString());
+                    LabelCurrent.Content = $"Current page: {_page}";
+                }
+            }
+
+            if (((Label)sender).Name.ToString() == "LabelSortNameAsc")
+            {
+
+            }
+            else if (((Label)sender).Name.ToString() == "LabelSortNameDesc")
+            {
+
+            }
+            else if (((Label)sender).Name.ToString() == "LabelSortPriceAsc")
+            {
+
+            }
+            else if (((Label)sender).Name.ToString() == "LabelSortPriceDesc")
+            {
+
+            }
         }
 
         private void LabelGoTo_MouseDown(object sender, MouseButtonEventArgs e)
@@ -260,26 +303,6 @@ namespace RecordsStoreExam
                 UpdateRecordsContent();
                 LabelCurrent.Content = $"Current page: {_page}";
             } 
-        }
-
-        private void LabelSorting_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if(((Label)sender).Name.ToString() == "LabelSortNameAsc")
-            {
-
-            }
-            else if (((Label)sender).Name.ToString() == "LabelSortNameDesc")
-            {
-
-            }
-            else if (((Label)sender).Name.ToString() == "LabelSortPriceAsc")
-            {
-
-            }
-            else if (((Label)sender).Name.ToString() == "LabelSortPriceDesc")
-            {
-
-            }
-        }
+        }  
     }
 }
