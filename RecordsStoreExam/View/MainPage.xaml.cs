@@ -52,7 +52,7 @@ namespace RecordsStoreExam
             FillSortingOptions();
             using (MusicStoreContext db = new MusicStoreContext(IContextOptions.Options))
             {  
-                _allRecordsList = db.Records.ToList();
+                _allRecordsList = db.Records.Include(x => x.Sales).ToList();
                 _currentRecordsPerformerList = _allRecordsList;
                 _currentRecordsList = _currentRecordsPerformerList;
                 _bandsList = db.Bands.ToList();
@@ -281,6 +281,11 @@ namespace RecordsStoreExam
                     else if (x.Label.Name.ToString() == "LabelSortPriceDesc")
                     {
                         _currentRecordsList.Sort((x, y) => y.Price.CompareTo(x.Price));
+                    }
+                    if(x.Label.Name.ToString() == "LabelSortTrending") 
+                    {
+                         _currentRecordsList = _currentRecordsList.Where(x => x.Sales.Count > 0).ToList();
+                        _currentRecordsList.Sort((x, y) => y.Sales.Count.CompareTo(x.Sales.Count));
                     }
                     break;
                 }

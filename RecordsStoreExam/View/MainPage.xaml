@@ -23,7 +23,7 @@
             <Label FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" DockPanel.Dock="Top" MouseEnter="LabelSorting_MouseEnter" MouseLeave="LabelSorting_MouseLeave" MouseDown="LabelSorting_MouseDown" Name="LabelSortNameDesc">By name Z-A</Label>
             <Label FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" DockPanel.Dock="Top" MouseEnter="LabelSorting_MouseEnter" MouseLeave="LabelSorting_MouseLeave" MouseDown="LabelSorting_MouseDown" Name="LabelSortPriceAsc">From cheap to expensive</Label>
             <Label FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" DockPanel.Dock="Top" MouseEnter="LabelSorting_MouseEnter" MouseLeave="LabelSorting_MouseLeave" MouseDown="LabelSorting_MouseDown" Name="LabelSortPriceDesc">From expensive to cheap</Label>
-            <Label FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" DockPanel.Dock="Top" MouseEnter="LabelSorting_MouseEnter" MouseLeave="LabelSorting_MouseLeave" MouseDown="LabelSorting_MouseDown" Name="LabelSortPopular">Trending</Label>
+            <Label FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" DockPanel.Dock="Top" MouseEnter="LabelSorting_MouseEnter" MouseLeave="LabelSorting_MouseLeave" MouseDown="LabelSorting_MouseDown" Name="LabelSortTrending">Trending</Label>
         </DockPanel>
 
         <DockPanel Height="100" Name="PaginationDockPanel" DockPanel.Dock="Bottom" HorizontalAlignment="Stretch">
