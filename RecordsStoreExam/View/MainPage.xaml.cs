@@ -36,7 +36,8 @@ namespace RecordsStoreExam
         private SolidColorBrush _brushDefault = new SolidColorBrush(Color.FromRgb(99, 99, 99));
         private SolidColorBrush _brushSelected = new SolidColorBrush(Color.FromRgb(70, 70, 70));
 
-        private List<Record> _recordsList = new();
+        private readonly List<Record> _allRecordsList = new();
+        private List<Record> _currentRecordsList = new();
         private List<Band> _bandsList = new();
 
         public MainPage()
@@ -47,13 +48,15 @@ namespace RecordsStoreExam
 
             FillSortingOptions();
             using (MusicStoreContext db = new MusicStoreContext(IContextOptions.Options))
-            {
-                foreach (var band in db.Bands)
+            {  
+                _allRecordsList = db.Records.ToList();
+                _currentRecordsList = _allRecordsList;
+                _bandsList = db.Bands.ToList();
+
+                foreach (var band in _bandsList)
                 {
                     AddPerformerToSortingList(band.Name);
                 }
-                _recordsList = db.Records.ToList();
-                _bandsList = db.Bands.ToList();
             }
             UpdateRecordsContent();
         }
@@ -112,7 +115,7 @@ namespace RecordsStoreExam
             GridRecords.Children.Clear();
             if (performer == null)
             {
-                foreach (var record in _recordsList.Skip(_page * _recordsOnPage).Take(_recordsOnPage))
+                foreach (var record in _currentRecordsList.Skip(_page * _recordsOnPage).Take(_recordsOnPage))
                 {
                     AddRecordToStackPanel(record, column, row);
                     if (++column == 3)
@@ -121,12 +124,12 @@ namespace RecordsStoreExam
                         row++;
                     }
                 }
-                _totalPages = _recordsList.Count() / _recordsOnPage;
+                _totalPages = _currentRecordsList.Count() / _recordsOnPage;
             }
             else
             {
                 int id = _bandsList.Where(x => x.Name == performer).First().Id;
-                foreach (var record in _recordsList.Where(x => x.IdBand == id).Skip(_page * _recordsOnPage).Take(_recordsOnPage))
+                foreach (var record in _currentRecordsList.Where(x => x.IdBand == id).Skip(_page * _recordsOnPage).Take(_recordsOnPage))
                 {
                     AddRecordToStackPanel(record, column, row);
                     if (++column == 3)
@@ -135,7 +138,7 @@ namespace RecordsStoreExam
                         row++;
                     }
                 }
-                _totalPages = _recordsList.Where(x => x.IdBand == id).Count() / _recordsOnPage;
+                _totalPages = _currentRecordsList.Where(x => x.IdBand == id).Count() / _recordsOnPage;
             }
             LabelTotal.Content = $"Total pages: 0-{_totalPages}";
         }
