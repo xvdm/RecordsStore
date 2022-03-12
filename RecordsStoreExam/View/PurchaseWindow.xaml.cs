@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RecordsStoreExam.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -117,8 +118,16 @@ namespace RecordsStoreExam.View
 
         private void Label_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            using(MusicStoreContext db = new MusicStoreContext(IContextOptions.Options))
+            {
+                Sale sale = new Sale();
+                sale.IdRecord = _record.Id;
+                sale.IdUser = _user.Id;
+                sale.DateOfSale = DateTime.Now;
+                db.Sales.Add(sale);
+                db.SaveChanges();
+            }
             MessageBox.Show("Successfully purchased");
-            
             Close();
         }
     }
