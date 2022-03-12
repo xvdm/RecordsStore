@@ -108,7 +108,18 @@ namespace RecordsStoreExam
 
         private void LabelProfile_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            frame.Navigate(new ProfilePage());
+            var profilePage = new ProfilePage(_user);
+            frame.Navigate(profilePage);
+            UpdateUser();
+            LabelProfile.Content = _user.Login;
+        }
+
+        private void UpdateUser()
+        {
+            using(MusicStoreContext db = new MusicStoreContext(IContextOptions.Options))
+            {
+                _user = db.Users.Where(x => x.Id == _user.Id).FirstOrDefault();
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RecordsStoreExam.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,27 +11,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace RecordsStoreExam.View
 {
     /// <summary>
-    /// Логика взаимодействия для ProfilePage.xaml
+    /// Логика взаимодействия для ChangeLoginWindow.xaml
     /// </summary>
-    public partial class ProfilePage : Page
+    public partial class ChangeLoginWindow : Window
     {
         private User _user;
 
         private SolidColorBrush _brushDefault = new SolidColorBrush(Color.FromRgb(0, 0, 0));
         private SolidColorBrush _brushSelected = new SolidColorBrush(Color.FromRgb(50, 50, 50));
 
-        public ProfilePage(User user)
+        public ChangeLoginWindow(User user)
         {
             InitializeComponent();
             _user = user;
-            Width = SystemParameters.WorkArea.Width;
-            Height = SystemParameters.WorkArea.Height - 100;
         }
 
         private void Label_MouseEnter(object sender, MouseEventArgs e)
@@ -43,10 +41,17 @@ namespace RecordsStoreExam.View
             ((Label)sender).Background = _brushDefault;
         }
 
-        private void ChangeLoginLabel_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Label_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            var changeWindow = new ChangeLoginWindow(_user);
-            changeWindow.ShowDialog();
+            if (LoginTextBox.Text.Length > 0 && LoginTextBox.Text.Trim().Length == LoginTextBox.Text.Length)
+            {
+                using (MusicStoreContext db = new MusicStoreContext(IContextOptions.Options))
+                {
+                    db.Users.Where(x => x.Id == _user.Id).First().Login = LoginTextBox.Text.Trim();
+                    db.SaveChanges();
+                }
+            }       
+            Close();
         }
     }
 }

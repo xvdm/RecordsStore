@@ -8,7 +8,9 @@
       d:DesignHeight="980" d:DesignWidth="1920"
       Title="ProfilePage">
 
-    <Grid>
-        <TextBlock Width="200" Height="200" Text="Profile page" FontSize="30"></TextBlock>
-    </Grid>
+    <DockPanel Name="MainDockPanel">
+        <StackPanel>
+            <Label Width="200" Height="100" FontSize="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" Background="Black" Foreground="White" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" Name="ChangeLoginLabel" MouseDown="ChangeLoginLabel_MouseDown">Change login</Label>
+        </StackPanel>
+    </DockPanel>
 </Page>
