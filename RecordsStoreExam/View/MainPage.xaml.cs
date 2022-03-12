@@ -21,9 +21,6 @@ using System.Windows.Shapes;
 
 namespace RecordsStoreExam
 {
-    /// <summary>
-    /// Логика взаимодействия для MainPage.xaml
-    /// </summary>
     public partial class MainPage : Page
     {
         private int _page = 0;
