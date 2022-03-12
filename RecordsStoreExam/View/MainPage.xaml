@@ -6,11 +6,10 @@
       xmlns:local="clr-namespace:RecordsStoreExam"
       mc:Ignorable="d" 
       d:DesignHeight="980" d:DesignWidth="1920"
-      Background="Gray"
       Title="MainPage">
 
     <DockPanel>
-        <DockPanel Background="#FF636363">
+        <DockPanel>
             <Label FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" DockPanel.Dock="Top" Margin="0,40,0,0">Performers</Label>
             <ScrollViewer Width="400" Padding="0,0,0,10">
                 <DockPanel Name="PerformersDockTable"/>
@@ -18,7 +17,7 @@
         </DockPanel>
 
 
-        <DockPanel Width="400" DockPanel.Dock="Right" Background="#FF636363" Name="SortingDockPanel">
+        <DockPanel Width="400" DockPanel.Dock="Right" Name="SortingDockPanel">
             <Label FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" DockPanel.Dock="Top" Margin="0,40,0,0">Sorting</Label>
             <Label FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" DockPanel.Dock="Top" MouseEnter="LabelSorting_MouseEnter" MouseLeave="LabelSorting_MouseLeave" MouseDown="LabelSorting_MouseDown" Name="LabelSortNameAsc">By name ascending</Label>
             <Label FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" DockPanel.Dock="Top" MouseEnter="LabelSorting_MouseEnter" MouseLeave="LabelSorting_MouseLeave" MouseDown="LabelSorting_MouseDown" Name="LabelSortNameDesc">By name descending</Label>
@@ -26,13 +25,13 @@
             <Label FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" DockPanel.Dock="Top" MouseEnter="LabelSorting_MouseEnter" MouseLeave="LabelSorting_MouseLeave" MouseDown="LabelSorting_MouseDown" Name="LabelSortPriceDesc">By price descending</Label>
         </DockPanel>
 
-        <DockPanel Height="100" Name="PaginationDockPanel" DockPanel.Dock="Bottom" Background="#FF636363" HorizontalAlignment="Stretch">
-            <Label Foreground="White" FontSize="24" Padding="25" Margin="0" Width="140" Content="Previous" Name="LabelPrevious" HorizontalAlignment="Center" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="LabelPrevious_MouseDown"></Label>
-            <Label Foreground="White" FontSize="24" Padding="25" Margin="0" Width="100" Content="Next" Name="LabelNext" HorizontalAlignment="Center" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="LabelNext_MouseDown"></Label>
-            <Label Foreground="White" FontSize="24" Padding="25,25,0,25" Margin="0" Width="150" Content="Go to page" Name="LabelGoTo" HorizontalAlignment="Center" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="LabelGoTo_MouseDown"></Label>
-            <TextBox Background="#FF636363" Width="125" Name="TextBoxGoTo" FontSize="24" Padding="0,25,0,25" Foreground="White" MaxLength="9" Text="0"></TextBox>
-            <Label Foreground="White" FontSize="24" Padding="25" Margin="0" Width="300" Content="Total pages: 0-0" Name="LabelTotal" DockPanel.Dock="Right"></Label>
-            <Label Foreground="White" FontSize="24" Padding="25" Margin="0" Width="300" Content="Current page: 0" Name="LabelCurrent" HorizontalAlignment="Right"></Label>
+        <DockPanel Height="100" Name="PaginationDockPanel" DockPanel.Dock="Bottom" HorizontalAlignment="Stretch">
+            <Label FontSize="24" Padding="25" Margin="0" Width="140" Content="Previous" Name="LabelPrevious" HorizontalAlignment="Center" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="LabelPrevious_MouseDown"></Label>
+            <Label FontSize="24" Padding="25" Margin="0" Width="100" Content="Next" Name="LabelNext" HorizontalAlignment="Center" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="LabelNext_MouseDown"></Label>
+            <Label FontSize="24" Padding="25,25,0,25" Margin="0" Width="150" Content="Go to page" Name="LabelGoTo" HorizontalAlignment="Center" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="LabelGoTo_MouseDown"></Label>
+            <TextBox Width="125" Name="TextBoxGoTo" FontSize="24" Padding="0,25,0,25" MaxLength="9" Text="0"></TextBox>
+            <Label FontSize="24" Padding="25" Margin="0" Width="300" Content="Total pages: 0-0" Name="LabelTotal" DockPanel.Dock="Right"></Label>
+            <Label FontSize="24" Padding="25" Margin="0" Width="300" Content="Current page: 0" Name="LabelCurrent" HorizontalAlignment="Right"></Label>
         </DockPanel>
         
         <Grid Margin="0,40,0,0" Name="GridRecords">

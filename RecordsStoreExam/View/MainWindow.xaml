@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RecordsStoreExam"
         mc:Ignorable="d"
         Title="Records" Height="1080" Width="1920"
-        Background="Gray">
+        Background="White">
     <Window.Resources>
 
     </Window.Resources>
@@ -16,7 +16,7 @@
             <Label Foreground="White" FontSize="30" Padding="27" Margin="0" Width="125" Content="Main" Name="LabelMain" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="LabelMain_MouseDown"></Label>
             <Label Foreground="White" FontSize="30" Padding="27" Margin="0" Width="170" Content="Contacts" Name="LabelContacts" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="LabelContacts_MouseDown"></Label>
             <Label Foreground="White" FontSize="30" Padding="27" Margin="0" Width="135" Content="About" Name="LabelAbout" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="LabelAbout_MouseDown"></Label>
-            <Label Foreground="White" FontSize="30" Padding="27" Margin="0" DockPanel.Dock="Right" Width="140" Content="Profile" Name="LabelProfile" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="LabelProfile_MouseDown"></Label>
+            <Label Foreground="White" FontSize="30" Padding="27" Margin="0" HorizontalContentAlignment="Right" DockPanel.Dock="Right" Width="340" Content="Profile" Name="LabelProfile" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="LabelProfile_MouseDown"></Label>
             <Label Height="100" Content="8-800-555-3535" Foreground="White" FontSize="30" Padding="27" Margin="15,0,15,15 " DockPanel.Dock="Right" HorizontalAlignment="Right"></Label>
         </DockPanel>
         <Frame x:Name="frame" Margin="0,100,0,0" NavigationUIVisibility="Hidden"/>

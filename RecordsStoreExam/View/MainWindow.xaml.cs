@@ -36,8 +36,9 @@ namespace RecordsStoreExam
             //this.WindowStyle = WindowStyle.None;
             WindowState = WindowState.Maximized;
             MenuDockPanel.Width = Width;
+            LabelProfile.Content = _user.Login;
 
-            if(_user.IsAdmin == true)
+            if (_user.IsAdmin == true)
             {
                 frame.Navigate(new AdminMainPage());
             }

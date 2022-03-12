@@ -30,8 +30,8 @@ namespace RecordsStoreExam
         private List<Performer> _performers = new();
         private List<SortingOption> _sortingOptions = new();
 
-        private SolidColorBrush _brushDefault = new SolidColorBrush(Color.FromRgb(99, 99, 99));
-        private SolidColorBrush _brushSelected = new SolidColorBrush(Color.FromRgb(70, 70, 70));
+        private SolidColorBrush _brushDefault = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+        private SolidColorBrush _brushSelected = new SolidColorBrush(Color.FromRgb(200, 200, 200));
 
         private readonly List<Record> _allRecordsList = new();
         private List<Record> _currentRecordsPerformerList = new();
@@ -93,6 +93,9 @@ namespace RecordsStoreExam
                 stackPanel.Children.Add(image);
                 stackPanel.Children.Add(label1);
                 stackPanel.Children.Add(label2);
+                stackPanel.MouseEnter += StackPanel_MouseEnter;
+                stackPanel.MouseLeave += StackPanel_MouseLeave;
+                stackPanel.MouseDown += StackPanel_MouseDown;
 
                 Grid.SetColumn(stackPanel, column);
                 Grid.SetRow(stackPanel, row);
@@ -123,7 +126,7 @@ namespace RecordsStoreExam
                 }
             }
             _totalPages = _currentRecordsList.Count() / _recordsOnPage;
-            LabelTotal.Content = $"Total pages: 0-{_totalPages}";
+            LabelTotal.Content = $"Pages: 0-{_totalPages}";
         }
 
 
@@ -167,6 +170,21 @@ namespace RecordsStoreExam
         private void Label_MouseDown(object sender, MouseEventArgs e)
         {
             ((Label)sender).Background = _brushSelected;
+        }
+
+        private void StackPanel_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ((StackPanel)sender).Background = _brushSelected;
+        }
+
+        private void StackPanel_MouseLeave(object sender, MouseEventArgs e)
+        {
+            ((StackPanel)sender).Background = _brushDefault;
+        }
+
+        private void StackPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            ((StackPanel)sender).Background = _brushSelected;
         }
 
         private void LabelPerformer_MouseEnter(object sender, MouseEventArgs e)
